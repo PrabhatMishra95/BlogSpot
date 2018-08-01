@@ -3,69 +3,95 @@ package com.niit.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table
+@SequenceGenerator(name = "jobidseq", sequenceName="job_id_sequence", allocationSize = 1)
 public class JobDetail {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jobidseq")
 	private int jobId;
-	private String designation;
-	private String rolesAndResp;
+	private String jobDesignation;
+
+	private int salary;
 	private String company;
-	private Date lastDate;
+	private String role;
 	private String location;
-	private int ctc;
-	private String skills;
+	private Date lastDateToApply;
+	private String jobDescription;
+
 	public int getJobId() {
 		return jobId;
 	}
+
 	public void setJobId(int jobId) {
 		this.jobId = jobId;
 	}
-	public String getDesignation() {
-		return designation;
+
+	
+
+	public String getJobDesignation() {
+		return jobDesignation;
 	}
-	public void setDesignation(String designation) {
-		this.designation = designation;
+
+	public void setJobDesignation(String jobDesignation) {
+		this.jobDesignation = jobDesignation;
 	}
-	public String getRolesAndResp() {
-		return rolesAndResp;
+
+	public int getSalary() {
+		return salary;
 	}
-	public void setRolesAndResp(String rolesAndResp) {
-		this.rolesAndResp = rolesAndResp;
+
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
+
 	public String getCompany() {
 		return company;
 	}
+
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public Date getLastDate() {
-		return lastDate;
+
+	public String getRole() {
+		return role;
 	}
-	public void setLastDate(Date lastDate) {
-		this.lastDate = lastDate;
+
+	public void setRole(String role) {
+		this.role = role;
 	}
+
 	public String getLocation() {
 		return location;
 	}
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public int getCtc() {
-		return ctc;
+
+	public String getJobDescription() {
+		return jobDescription;
 	}
-	public void setCtc(int ctc) {
-		this.ctc = ctc;
+
+	public void setJobDescription(String jobDescription) {
+		this.jobDescription = jobDescription;
 	}
-	public String getSkills() {
-		return skills;
+
+	public Date getLastDateToApply() {
+		return lastDateToApply;
 	}
-	public void setSkills(String skills) {
-		this.skills = skills;
+
+	public void setLastDateToApply(Date lastDateToApply) {
+		this.lastDateToApply = lastDateToApply;
 	}
-	
 }

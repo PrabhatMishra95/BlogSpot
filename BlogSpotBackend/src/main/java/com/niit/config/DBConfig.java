@@ -20,18 +20,19 @@ public class DBConfig {
 	
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource=new DriverManagerDataSource();
-		dataSource.setDriverClassName("");
-		dataSource.setUrl("");
-		dataSource.setUsername("");
-		dataSource.setPassword("");
+		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XE");
+		dataSource.setUsername("hr");
+		dataSource.setPassword("hr");
 		return dataSource;
 	}
 	
 	@Bean(name="sessionFactory")
 	public SessionFactory getSessionFactory() {
 		Properties hibernateProp=new Properties();
-		hibernateProp.put("hibernate.hbmddl2.auto","update");
+		hibernateProp.put("hibernate.hbm2ddl.auto","create");
 		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+		hibernateProp.put("hibernate.show_sql", "true");
 		
 		LocalSessionFactoryBuilder sessionFactoryBuilder=new LocalSessionFactoryBuilder(getDataSource());
 		sessionFactoryBuilder.addProperties(hibernateProp);
