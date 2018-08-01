@@ -30,7 +30,7 @@ public class DBConfig {
 	@Bean(name="sessionFactory")
 	public SessionFactory getSessionFactory() {
 		Properties hibernateProp=new Properties();
-		hibernateProp.put("hibernate.hbm2ddl.auto","create");
+		hibernateProp.put("hibernate.hbm2ddl.auto","update");
 		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		hibernateProp.put("hibernate.show_sql", "true");
 		

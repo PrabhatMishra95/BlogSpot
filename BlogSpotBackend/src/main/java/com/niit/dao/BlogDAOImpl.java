@@ -92,9 +92,9 @@ public class BlogDAOImpl implements BlogDAO {
 	@Transactional
 	public boolean disLikes(Blog blog) {
 		try{
-			 int likes=blog.getLikes();
+			 int likes=blog.getDislikes();
 			 likes--;
-			 blog.setLikes(likes);
+			 blog.setDislikes(likes);
 			 sessionfactory.getCurrentSession().update(blog);
 			 return true;
 		 }catch(Exception e)

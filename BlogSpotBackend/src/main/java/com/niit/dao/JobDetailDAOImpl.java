@@ -69,7 +69,7 @@ public class JobDetailDAOImpl implements JobDetailDAO {
 			Session session = sessionfactory.openSession();
 			session.beginTransaction();
 			List<JobDetail> jobList = new ArrayList<JobDetail>();
-			Query query = session.createQuery("FROM Job");
+			Query query = session.createQuery("FROM JobDetail");
 			jobList = query.list();
 			return jobList;
 		} catch (Exception e) {
