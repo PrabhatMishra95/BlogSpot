@@ -41,8 +41,8 @@ public class BlogController {
 		blog.setCreatedDate(new java.util.Date());
 		blog.setLikes(0);
 		blog.setStatus("NA");
-		blog.setLoginName((String) session.getAttribute("loginname"));
-		if (blogDAO.addBlog(blog)) {
+/*		blog.setLoginName((String) session.getAttribute("loginname"));
+*/		if (blogDAO.addBlog(blog)) {
 			return new ResponseEntity<String>("Blog Added- Success", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("Blod insert failed", HttpStatus.NOT_FOUND);

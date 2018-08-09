@@ -28,8 +28,8 @@ public class FriendDAOImpl implements FriendDAO {
 	public boolean sendFriendRequest(Friend friend) {
 
 		try {
-			System.out.println("Into Send Friend REquest");
-			friend.setStatus("SFR");
+			System.out.println("Into Send Friend Request");
+			friend.setStatus("P");
 			sessionfactory.getCurrentSession().save(friend);
 			return true;
 		} catch (Exception e) {
@@ -48,7 +48,7 @@ public class FriendDAOImpl implements FriendDAO {
 			Session session = sessionfactory.openSession();
 			Friend friend = (Friend) session.get(Friend.class, friendId);
 
-			if (friend.getStatus() == "SFR") {
+			if (friend.getStatus() == "P") {
 				sessionfactory.getCurrentSession().delete(friend);
 				session.close();
 				System.out.println("Deleted Friend Request is:" + friendId);
@@ -59,7 +59,7 @@ public class FriendDAOImpl implements FriendDAO {
 
 			return true;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -114,7 +114,7 @@ public class FriendDAOImpl implements FriendDAO {
 	return suggestFriendList;
 		
 	}
-
+	
 	@Transactional
 	public List<Friend> showAllFriends(String loginName) {
 	

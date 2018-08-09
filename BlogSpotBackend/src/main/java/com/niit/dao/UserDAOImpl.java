@@ -90,7 +90,6 @@ public class UserDAOImpl implements UserDAO {
 
 			return true;
 		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}

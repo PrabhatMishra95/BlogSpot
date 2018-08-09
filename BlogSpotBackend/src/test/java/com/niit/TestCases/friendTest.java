@@ -70,18 +70,18 @@ public class friendTest {
 			 System.out.println(userDetail.getLoginName());
 		 }
 	}
-	@Ignore
+	
 	@Test
 	public void showAllFriendRequestsTest()
 	{
-		 List<Friend> listFriendRequests =friendDao.showAllFriends("Shubham");
+		 List<Friend> listFriendRequests =friendDao.showAllFriends("Prabhat");
 		 assertNotNull("Problem found null pointer",listFriendRequests);
 		System.out.println("<========================All friend requests=====================>");
 		 for(Friend friend:listFriendRequests){
 			 System.out.println(friend.getLoginName()+"::::"+friend.getFriendloginname());
 		 }	
 	}
-	@Ignore
+	
 	@Test
 	public void acceptFriendRequestTest()
 	{
