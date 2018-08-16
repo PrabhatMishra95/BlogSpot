@@ -48,10 +48,10 @@ public class forumCommentTest {
 	public void testGetForumCommment() {
 		forumComment = forumcommentDao.getForumComment(1);
 		assertEquals("Successfully fetched a forumComments from the table", "ShubhamRDurugkar",
-				forumComment.getLoginName());
+				forumComment.getLoginname());
 		System.out.println("<========ForumComment========>");
 		System.out.println("forumID :" + forumComment.getForumId());
-		System.out.println("Username :" + forumComment.getLoginName());
+		System.out.println("Username :" + forumComment.getLoginname());
 		System.out.println("Status :" + forumComment.getCommentId());
 		System.out.println("Likes :" + forumComment.getCommentText());
 		System.out.println("Created Date :" + forumComment.getCommentDate());
@@ -77,7 +77,7 @@ public class forumCommentTest {
 			System.out.println("forumID :" + forumComment.getForumId());
 			System.out.println("CommentID :" + forumComment.getCommentId());
 			System.out.println("Comment Text :" + forumComment.getCommentText());
-			System.out.println("Username :" + forumComment.getLoginName());
+			System.out.println("Username :" + forumComment.getLoginname());
 			System.out.println("Comment Date : " + forumComment.getCommentDate());
 		}
 		System.out.println("<-----------Successfully retrieved list of forumComments-------->");

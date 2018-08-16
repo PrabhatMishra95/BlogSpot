@@ -20,7 +20,6 @@ public class Blog {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blogidseq")
-	
 	@Column(name ="blogId")
 	private int blogId;
 	
@@ -30,11 +29,11 @@ public class Blog {
 	@Column(name ="blogContent")
 	private String blogContent;
 	
-	@Column(name ="createdDate")
-	private Date createdDate;
+	@Column(name ="createDate")
+	private Date createDate;
 	
-	@Column(name ="loginName")
-	private String loginName;
+	@Column(name ="loginname")
+	private String loginname;
 	
 	@Column(name ="likes")
 	private int likes;
@@ -69,13 +68,20 @@ public class Blog {
 		this.blogContent = blogContent;
 	}
 
-	
-	public String getLoginName() {
-		return loginName;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getLoginname() {
+		return loginname;
+	}
+
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 
 	public int getLikes() {
@@ -102,12 +108,6 @@ public class Blog {
 		this.status = status;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
+	
 
 }

@@ -44,10 +44,10 @@ assertEquals("Succefully deleted the user Test Case",true, userdao.deleteuser(us
 	public void insertUserTest() {
 		
 		UserDetail user = new UserDetail();
-		user.setUserName("Prabhat");
-		user.setEmailid("Prabhat@gmail.com");
+		user.setUsername("Prabhat");
+		user.setEmailId("Prabhat@gmail.com");
 		user.setPassword("prabhat@123");
-		user.setRole("USER");
+		user.setRole("ROLE_USER");
 		assertEquals("Successfully added User into the Table", true , userdao.registerUser(user));
 		System.out.println("---------------Successfully Inserted into User----------------");
 	}
@@ -55,7 +55,7 @@ assertEquals("Succefully deleted the user Test Case",true, userdao.deleteuser(us
 	public void updateUserTest() {
 		UserDetail user = new UserDetail();
 		user = userdao.getUser("Sam");
-		user.setUserName("Sam Jebastin");
+		user.setLoginname("Sam Jebastin");
 		assertEquals("Successfully Updated User into the table",true,userdao.updateUser(user));
 		System.out.println("---------Successfully Updated User------------");
 		
@@ -65,11 +65,11 @@ assertEquals("Succefully deleted the user Test Case",true, userdao.deleteuser(us
 	@Test
 	void registerUser() {
 		UserDetail userDetail = new UserDetail();
-		userDetail.setLoginName("Sam");
+		userDetail.setLoginname("Sam");
 		userDetail.setPassword("sam@123");
 		userDetail.setRole("ADMIN");
-		userDetail.setUserName("Samuel Jebastin");
-		userDetail.setEmailid("samjebastin77@gmail.com");
+		userDetail.setLoginname("Samuel Jebastin");
+		userDetail.setEmailId("samjebastin77@gmail.com");
 		userDetail.setAddress("Bhiwandi");
 		userDetail.setMobileNo("9766376624");
 		userDetail.setIsOnline("N");
@@ -90,7 +90,7 @@ assertEquals("Succefully deleted the user Test Case",true, userdao.deleteuser(us
 	@Test
 	public void checkUserTest() {
 		UserDetail userDetail = new UserDetail();
-		userDetail.setLoginName("Sam");
+		userDetail.setLoginname("Sam");
 		userDetail.setPassword("sam@123");
 		assertTrue("Problem in Checking User Test Case", userDAO.checkLogin(userDetail));
 		System.out.println("Checked User Successfully");

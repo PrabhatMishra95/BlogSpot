@@ -67,7 +67,7 @@ public class friendTest {
 		 assertNotNull("Problem found null pointer",listSuggestedFriends);
 			System.out.println("<========================Suggested friends=====================>");
 		 for(UserDetail userDetail:listSuggestedFriends){
-			 System.out.println(userDetail.getLoginName());
+			 System.out.println(userDetail.getLoginname());
 		 }
 	}
 	

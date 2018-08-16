@@ -22,8 +22,8 @@ public class BlogComment {
 	private int commentId;
 	private int blogId;
 	private String commentText;
-	private String userName;
-	private String loginName;
+	private String username;
+	
 	private Date commentDate;
 
 	public int getCommentId() {
@@ -58,20 +58,14 @@ public class BlogComment {
 		this.commentDate = commentDate;
 	}
 
-	public String getLoginName() {
-		return loginName;
+	
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setLoginname(String loginName) {
-		this.loginName = loginName;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

@@ -42,7 +42,7 @@ public class blogCommentTest {
 	public void testAddBlogComment() {
 	    blogComment = new BlogComment();
 	    blogComment.setBlogId(3);
-		blogComment.setUserName("Jebastin");
+		blogComment.setUsername("Jebastin");
 		blogComment.setCommentDate(new java.util.Date());
 		blogComment.setCommentText("Hibernate blog");
 		assertEquals("Successfully added the blogComment...", true, blogcommentDao.addBlogComment(blogComment));
@@ -53,10 +53,10 @@ public class blogCommentTest {
 	@Test
 	public void testGetBlogCommment() {
 		blogComment = blogcommentDao.getBlogComment(1);
-		assertEquals("Successfully fetched a blogComments from the table", "SamSSJ", blogComment.getUserName());
+		assertEquals("Successfully fetched a blogComments from the table", "SamSSJ", blogComment.getUsername());
 		System.out.println("<========BlogComment========>");
 		System.out.println("blogID :" + blogComment.getBlogId());
-		System.out.println("Username :" + blogComment.getUserName());
+		System.out.println("Username :" + blogComment.getUsername());
 		System.out.println("Status :" + blogComment.getCommentId());
 		System.out.println("Likes :" + blogComment.getCommentText());
 		System.out.println("Created Date :" + blogComment.getCommentDate());
@@ -81,7 +81,7 @@ public class blogCommentTest {
 			System.out.println("blogID :" + blogComment.getBlogId());
 			System.out.println("CommentID :" + blogComment.getCommentId());
 			System.out.println("Comment Text :" + blogComment.getCommentText());
-			System.out.println("Username :" + blogComment.getUserName());
+			System.out.println("Username :" + blogComment.getUsername());
 			System.out.println("Comment Date : " + blogComment.getCommentDate());
 		}
 		System.out.println("<-----------Successfully retrieved list of blogComments-------->");

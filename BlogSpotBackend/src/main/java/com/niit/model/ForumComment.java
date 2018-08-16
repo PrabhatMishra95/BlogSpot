@@ -23,7 +23,7 @@ public class ForumComment {
 	private int forumId;
 	private String commentText;
 	private Date commentDate;
-	private String loginName;
+	private String loginname;
 
 	public int getCommentId() {
 		return commentId;
@@ -57,12 +57,12 @@ public class ForumComment {
 		this.commentDate = commentDate;
 	}
 
-	public String getLoginName() {
-		return loginName;
+	public String getLoginname() {
+		return loginname;
 	}
 
-	public void setLoginname(String loginName) {
-		this.loginName = loginName;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 
 }

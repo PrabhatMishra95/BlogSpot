@@ -32,7 +32,7 @@ public class ForumCommentController {
 				forumComment.setForumId(forumComment.getForumId());
 				forumComment.setCommentDate(new java.util.Date());
 				forumComment.setCommentText(forumComment.getCommentText());
-				forumComment.setLoginname(forumComment.getLoginName());
+				forumComment.setLoginname(forumComment.getLoginname());
 			
 				
 				

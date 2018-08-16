@@ -38,11 +38,11 @@ public class BlogController {
 	public ResponseEntity<String> addBlog(@RequestBody Blog blog,HttpSession session) {
 		
 		System.out.println("=====>In addBlog restcontroller");
-		blog.setCreatedDate(new java.util.Date());
+		blog.setCreateDate(new java.util.Date());
 		blog.setLikes(0);
 		blog.setStatus("NA");
-/*		blog.setLoginName((String) session.getAttribute("loginname"));
-*/		if (blogDAO.addBlog(blog)) {
+	//blog.setLoginname((String) session.getAttribute("loginname"));
+		if (blogDAO.addBlog(blog)) {
 			return new ResponseEntity<String>("Blog Added- Success", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("Blod insert failed", HttpStatus.NOT_FOUND);
@@ -75,10 +75,10 @@ public class BlogController {
 		
 		mBlog.setBlogContent(blog.getBlogContent());
 		mBlog.setBlogName(blog.getBlogName());
-		mBlog.setCreatedDate(new Date());
+		mBlog.setCreateDate(new Date());
 		mBlog.setLikes(blog.getLikes());
 		mBlog.setStatus(blog.getStatus());
-		mBlog.setLoginName(blog.getLoginName());
+		mBlog.setLoginname(blog.getLoginname());
 		
 		blogDAO.updateBlog(mBlog);
 		return new ResponseEntity<String>("Update Blog Success", HttpStatus.OK);
@@ -146,6 +146,18 @@ public class BlogController {
 		}
 
 	}
+	
+	@PostMapping(value = "/incrementLikes/{blogId}")
+	public ResponseEntity<String> incrementLikes(@PathVariable("blogId")int blogId) {
+		System.out.println("Increment likes for BlogId " + blogId);
+		Blog blog = blogDAO.getBlog(blogId);
+		if (blogDAO.incrementLike(blog)) {
+			return new ResponseEntity<String>("Successfully incremented..", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("Failed incremeneting likes..", HttpStatus.NOT_FOUND);
+		}
+	}
+
 	
 	
 }

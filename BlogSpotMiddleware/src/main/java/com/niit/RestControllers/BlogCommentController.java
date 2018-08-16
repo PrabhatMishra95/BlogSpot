@@ -33,12 +33,12 @@ public class BlogCommentController {
 				blogComment.setBlogId(blogComment.getBlogId());
 				blogComment.setCommentDate(new Date());
 				blogComment.setCommentText(blogComment.getCommentText());
-				blogComment.setUserName(blogComment.getUserName());
-				BlogComment blog = blogCommentDAO.getBlogComment(1);
-				String username = blog.getUserName();
+				blogComment.setUsername(blogComment.getUsername());
+				/*BlogComment blog = blogCommentDAO.getBlogComment(1);
+				String username = blog.getUsername();
 				int blogId = blog.getBlogId();
 				blogComment.setBlogId(blogId);
-				blogComment.setUserName(username);
+				blogComment.setUsername(username);*/
 				if (blogCommentDAO.addBlogComment(blogComment)) {
 					return new ResponseEntity<String>("BlogComment Added- Success", HttpStatus.OK);
 				} else {

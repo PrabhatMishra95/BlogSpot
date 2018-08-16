@@ -32,10 +32,10 @@ public class UserController {
 		
 		if(userDAO.checkLogin(userDetail))
 		{
-			UserDetail tempUser=(UserDetail)userDAO.getUser(userDetail.getLoginName());
+			UserDetail tempUser=(UserDetail)userDAO.getUser(userDetail.getLoginname());
 			userDAO.updateOnlineStatus("Y", tempUser);
 			session.setAttribute("userdetail",tempUser);
-			session.setAttribute("loginName",userDetail.getLoginName());
+			session.setAttribute("loginName",userDetail.getLoginname());
 			return new ResponseEntity<UserDetail>(tempUser,HttpStatus.OK);
 		}
 		else
@@ -50,7 +50,7 @@ public class UserController {
 public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user){
 	
 	user.setIsOnline("N");
-	user.setRole("Role_User");
+	user.setRole("ROLE_USER");
 	if (userDAO.registerUser(user)) {
 		return new ResponseEntity<UserDetail>(user, HttpStatus.OK);
 	} else {
@@ -75,7 +75,7 @@ public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user){
 	/*	mUser.setEmailId(userDetail.getEmailId());
 		mUser.setMobileNo(userDetail.getMobileNo());
 		mUser.setAddress(userDetail.getAddress());*/
-		mUser.setUserName(userDetail.getUserName());
+		mUser.setUsername(userDetail.getUsername());
 		userDAO.updateUser(mUser);
 		return new ResponseEntity<String>("User updated successfully", HttpStatus.OK);
 	}

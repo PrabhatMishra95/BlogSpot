@@ -44,8 +44,8 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			Session session = sessionfactory.openSession();
-			Query query = session.createQuery("from UserDetail where loginName=:loginName and password=:password");
-			query.setParameter("loginName", userDetail.getLoginName());
+			Query query = session.createQuery("from UserDetail where loginname=:loginName and password=:password");
+			query.setParameter("loginName", userDetail.getLoginname());
 			query.setParameter("password", userDetail.getPassword());
 			UserDetail userDetails = (UserDetail) query.list().get(0);
 			session.close();
@@ -60,10 +60,10 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Transactional
-	public UserDetail getUser(String loginName) {
+	public UserDetail getUser(String loginname) {
 
 		Session session = sessionfactory.openSession();
-		UserDetail userDetails =session.get(UserDetail.class,loginName);
+		UserDetail userDetails =session.get(UserDetail.class,loginname);
 		session.close();
 		return userDetails;
 

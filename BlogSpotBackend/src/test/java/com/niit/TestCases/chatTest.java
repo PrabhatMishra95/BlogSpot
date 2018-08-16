@@ -41,9 +41,9 @@ public class chatTest {
 
 		blog = new Blog();
 		blog.setBlogName("Shubham");
-		blog.setLoginName("shubhamRD");
+		blog.setLoginname("shubhamRD");
 		blog.setBlogContent("Food blog");
-		blog.setCreatedDate(new Date());
+		blog.setCreateDate(new Date());
 		blog.setStatus("A");
 		blog.setLikes(1);
 		assertEquals("Successfully added blog into the table", true, blogDao.addBlog(blog));

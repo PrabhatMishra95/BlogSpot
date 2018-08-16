@@ -40,7 +40,7 @@ public class ProfileController {
 		{
 			System.out.println("Uploading the picture..");
 			Profile profilePicture=new Profile();
-			profilePicture.setLoginname(userDetail.getLoginName());
+			profilePicture.setLoginname(userDetail.getLoginname());
 			profilePicture.setImage(fileupload.getBytes());
 			profileUpdateDAO.saveProfilePic(profilePicture);
 			System.out.println("Successfully uploaded..!!");

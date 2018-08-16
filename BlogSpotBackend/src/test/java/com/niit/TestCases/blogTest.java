@@ -36,11 +36,11 @@ public class blogTest {
 	public void insertBlogTest() throws ParseException {
 		blog = new Blog();
 		blog.setBlogName("Sam");
-		blog.setLoginName("SamSSJ");
+		blog.setLoginname("SamSSJ");
 		blog.setBlogContent("Cricket Club");
 		blog.setStatus("A");
 		blog.setLikes(1);
-		blog.setCreatedDate((java.sql.Date) new Date());
+		blog.setCreateDate((java.sql.Date) new Date());
 		assertEquals("Successfully added Blog ", true, blogDao.addBlog(blog));
 	}
 
@@ -65,15 +65,15 @@ public class blogTest {
 		System.out.println("blogID :" + blog.getBlogId());
 		System.out.println("blogName :" + blog.getBlogName());
 		System.out.println("blogContent :" + blog.getBlogContent());
-		System.out.println("Username :" + blog.getLoginName());
+		System.out.println("Username :" + blog.getLoginname());
 		System.out.println("Status :" + blog.getStatus());
 		System.out.println("Likes :" + blog.getLikes());
-		System.out.println("Created Date :" + blog.getCreatedDate());
+		System.out.println("Created Date :" + blog.getCreateDate());
 		System.out.println("<-----------Successfully fetched blog-------->");
 
 	}
 
-	@Ignore
+	/*@Ignore*/
 	@Test
 	public void listBlogTest() {
 		List<Blog> listBlog = blogDao.listBlog();
@@ -83,10 +83,10 @@ public class blogTest {
 			System.out.println("blogID :" + blog.getBlogId());
 			System.out.println("blogName :" + blog.getBlogName());
 			System.out.println("blogContent :" + blog.getBlogContent());
-			System.out.println("Username :" + blog.getLoginName());
+			System.out.println("Username :" + blog.getLoginname());
 			System.out.println("Status :" + blog.getStatus());
 			System.out.println("Likes :" + blog.getLikes());
-			System.out.println("Created Date :" + blog.getCreatedDate());
+			System.out.println("Created Date :" + blog.getCreateDate());
 		}
 		System.out.println("<-----------Successfully retrieved list of blog-------->");
 	}
@@ -134,21 +134,13 @@ public class blogTest {
 	@Test
 	public void incrementLikesTest() {
 		blog = blogDao.getBlog(1);
-		assertEquals("Successfully incremented likes to the table", true, blogDao.incrementLikes(blog));
+		assertEquals("Successfully incremented likes to the table", true, blogDao.incrementLike(blog));
 		System.out.println("<=========Likes=========>");
 		System.out.println("Likes After incrementing :" + blog.getLikes());
 		System.out.println("<-----------Successfully incremented blog likes-------->");
 	}
     
-    @Ignore
-  	@Test
-  	public void disLikesTest() {
-  		blog = blogDao.getBlog(2);
-  		assertEquals("Successfully decremented likes to the table", true, blogDao.disLikes(blog));
-  		System.out.println("<=========Likes=========>");
-  		System.out.println("Likes After incrementing :" + blog.getDislikes());
-  		System.out.println("<-----------Successfully  blog is updated with dislikes-------->");
-  	}
+   
     
     
     
