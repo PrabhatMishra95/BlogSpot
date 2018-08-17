@@ -19,7 +19,7 @@ public class ProfileUpdateDAOImpl implements ProfileUpdateDAO {
 	
 	@Transactional
 	public void saveProfilePic(Profile profilePicture) {
-		System.out.println("Profile LoginName:" +profilePicture.getLoginName());
+		System.out.println("Profile Loginname:" +profilePicture.getLoginname());
 	Session session = sessionfactory.openSession();
 	session.save(profilePicture);
 	session.flush();

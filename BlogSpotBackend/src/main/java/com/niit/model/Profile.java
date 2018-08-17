@@ -12,17 +12,17 @@ import org.springframework.stereotype.Component;
 @Table
 public class Profile {
     @Id
-	private String loginName;
+	private String loginname;
     @Lob
 	private  byte[] image;
 	
 
-	public String getLoginName() {
-		return loginName;
+	public String getLoginname() {
+		return loginname;
 	}
 
-	public void setLoginname(String loginName) {
-		this.loginName = loginName;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 
 	public byte[] getImage() {

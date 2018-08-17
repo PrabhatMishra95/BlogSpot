@@ -108,49 +108,6 @@
 </style>
 
 
-<!-- 
-<font face="san serif ms" color="yellow">
-	<div class="container" ng-controller="UserController"
-		data-ng-init="fetchUserDetails()">
-
-		<h1 style="text-decoration: underline;">Profile</h1>
-
-		<br /> <br /> <br />
-
-		<table class="table table-responsive"
-			style="margin-bottom: 50px; align: center; border: 1px solid black">
-
-			<tbody>
-				<tr>
-					<td colspan="2">
-						<center>
-							<img id="img1"
-								src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}"
-								style="height: 120px; width: 150px; border-radius: 25px;">
-						</center>
-					</td>
-				</tr>
-				<tr>
-					<td>User Name :</td>
-					<td>{{user.username}}</td>
-				</tr>
-				<tr>
-					<td>Mobile Number :</td>
-					<td>{{user.mobileNo}}</td>
-				</tr>
-				<tr>
-					<td>Email :</td>
-					<td>{{user.emailId}}</td>
-				</tr>
-				<tr>
-					<td>LoginName :</td>
-					<td>{{user.loginname}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</font> -->
-
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -167,12 +124,12 @@
 		<div class="card hovercard">
 			<div class="card-background">
 				<img class="card-bkimg" alt=""
-					src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}" onerror=this.src="avatar.png"  style="height: 50px; width: 60px">
+					src="http://localhost:8078/BlogSpotMiddleware/getImage/{{currentUser.loginname}}" onerror=this.src="avatar.png"  style="height: 50px; width: 60px">
 				<!-- http://lorempixel.com/850/280/people/9/ -->
 			</div>
 			<div class="useravatar">
 				<img alt="avatar"
-					src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}" onerror=this.src="avatar.png"  style="height: 50px; width: 60px">
+					src="http://localhost:8078/BlogSpotMiddleware/getImage/{{currentUser.loginname}}" onerror=this.src="avatar.png"  style="height: 50px; width: 60px">
 			</div>
 			<div class="card-info">
 				<span class="card-title" style="color: darkblue">{{user.username}}</span>
