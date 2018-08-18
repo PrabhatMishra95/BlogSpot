@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.dao.UserDAO;
@@ -21,50 +23,43 @@ import com.niit.model.UserDetail;
 
 @RestController
 public class UserController {
-	
-	
+
 	@Autowired
 	UserDAO userDAO;
-	
-	//------------------CheckLogin-----------------
+
+	// ------------------CheckLogin-----------------
 	@PostMapping(value = "/login")
-	public ResponseEntity<UserDetail> checkLogin(@RequestBody UserDetail userDetail, HttpSession session){
-		
-		if(userDAO.checkLogin(userDetail))
-		{
-			UserDetail tempUser=(UserDetail)userDAO.getUser(userDetail.getLoginname());
+	public ResponseEntity<UserDetail> checkLogin(@RequestBody UserDetail userDetail, HttpSession session) {
+
+		if (userDAO.checkLogin(userDetail)) {
+			UserDetail tempUser = (UserDetail) userDAO.getUser(userDetail.getLoginname());
 			userDAO.updateOnlineStatus("Y", tempUser);
-			session.setAttribute("userdetail",tempUser);
-			session.setAttribute("loginName",userDetail.getLoginname());
-			return new ResponseEntity<UserDetail>(tempUser,HttpStatus.OK);
-		}
-		else
-		{
-			return new ResponseEntity<UserDetail>(userDetail,HttpStatus.INTERNAL_SERVER_ERROR);
+			session.setAttribute("userdetail", tempUser);
+			session.setAttribute("loginName", userDetail.getLoginname());
+			return new ResponseEntity<UserDetail>(tempUser, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<UserDetail>(userDetail, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
+	// ---------------------RegisterUser----------------------------------//
+	@PostMapping(value = "/register")
+	public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user) {
 
-//---------------------RegisterUser----------------------------------//
-@PostMapping(value="/register")
-public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user){
-	
-	user.setIsOnline("N");
-	user.setRole("ROLE_USER");
-	if (userDAO.registerUser(user)) {
-		return new ResponseEntity<UserDetail>(user, HttpStatus.OK);
-	} else {
-		return new ResponseEntity<UserDetail>(user, HttpStatus.NOT_FOUND);
+		user.setIsOnline("N");
+		user.setRole("ROLE_USER");
+		if (userDAO.registerUser(user)) {
+			return new ResponseEntity<UserDetail>(user, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<UserDetail>(user, HttpStatus.NOT_FOUND);
+		}
+
 	}
-	
-	
-	
-}
 
-
-//----------- Update User -----------------------------
+	// ----------- Update User -----------------------------
 	@PutMapping(value = "/updateUser/{loginname}")
-	public ResponseEntity<String> updateUser(@PathVariable("loginname") String loginname, @RequestBody UserDetail userDetail) {
+	public ResponseEntity<String> updateUser(@PathVariable("loginname") String loginname,
+			@RequestBody UserDetail userDetail) {
 		System.out.println("In updating user " + loginname);
 		UserDetail mUser = userDAO.getUser(loginname);
 		if (mUser == null) {
@@ -72,9 +67,11 @@ public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user){
 			return new ResponseEntity<String>("No user found", HttpStatus.NOT_FOUND);
 		}
 
-	/*	mUser.setEmailId(userDetail.getEmailId());
-		mUser.setMobileNo(userDetail.getMobileNo());
-		mUser.setAddress(userDetail.getAddress());*/
+		/*
+		 * mUser.setEmailId(userDetail.getEmailId());
+		 * mUser.setMobileNo(userDetail.getMobileNo());
+		 * mUser.setAddress(userDetail.getAddress());
+		 */
 		mUser.setUsername(userDetail.getUsername());
 		userDAO.updateUser(mUser);
 		return new ResponseEntity<String>("User updated successfully", HttpStatus.OK);
@@ -102,7 +99,7 @@ public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user){
 		}
 	}
 
-	//-----------------------Delete user-----------------------
+	// -----------------------Delete user-----------------------
 	@DeleteMapping(value = "/deleteUser/{loginname}")
 	public ResponseEntity<String> deleteUser(@PathVariable("loginname") String loginname) {
 		System.out.println("In delete user" + loginname);
@@ -112,13 +109,21 @@ public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user){
 			return new ResponseEntity<String>("No user found to delete", HttpStatus.NOT_FOUND);
 		} else {
 			userDAO.deleteuser(user);
-			return new ResponseEntity<String>("User with LoginName " + loginname + " deleted successfully", HttpStatus.OK);
+			return new ResponseEntity<String>("User with LoginName " + loginname + " deleted successfully",
+					HttpStatus.OK);
 		}
 	}
 
+	@RequestMapping(value = { "/logout" }, method = RequestMethod.POST)
+	public ResponseEntity<Void> toLogout(@RequestBody UserDetail user) {
 
-
-
-
+		user.setIsOnline("N");
+		boolean b = userDAO.updateUser(user);
+		if (b)
+			System.out.println("User set Offline");
+		else
+			System.out.println("User couldn't set offline");
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
 
 }
