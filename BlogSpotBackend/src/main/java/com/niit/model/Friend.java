@@ -19,7 +19,7 @@ public class Friend {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "friendidseq")
 	private int friendId;
 
-	private String loginName;
+	private String loginname;
 	private String friendloginname;
 	private String status;
 
@@ -31,12 +31,14 @@ public class Friend {
 		this.friendId = friendId;
 	}
 
-	public String getLoginName() {
-		return loginName;
+	
+
+	public String getLoginname() {
+		return loginname;
 	}
 
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 
 	public String getFriendloginname() {

@@ -42,8 +42,18 @@ myApp.config(function($routeProvider) {
 		templateUrl : "C_forum/SingleForum.html"
 	}).when("/Chat", {
 		templateUrl : "C_chat/chat.html"
-	}).when("/Friends", {
-		templateUrl : "C_friend/showAllFriends.html"
+	}).when("/myFriends", {
+		templateUrl : "C_friend/myFriends.html"
+	}).when("/pendingRequests", {
+		templateUrl : "C_friend/frndReqRcvd.html"
+	}).when("/Job", {
+		templateUrl : "C_job/addJob.html"
+	}).when("/ViewJobs", {
+		templateUrl : "C_job/ViewJobs.html"
+	}).when("/AppliedJobs", {
+		templateUrl : "C_job/AppliedJobs.html"
+	}).when("/SingleJob", {
+		templateUrl : "C_job/SingleJob.html"
 	});
 });
 

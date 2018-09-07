@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component
 @Entity
 @Table
@@ -21,7 +23,10 @@ public class ApplyJob {
 	@Id
 	@GeneratedValue(generator="applyjob_sequence",strategy=GenerationType.SEQUENCE)
 	private int appliationId;
-	private String loginName;
+	private String loginname;
+	private String company;
+	private String jobDesignation;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date appliedDate;
 	
 	
@@ -37,11 +42,25 @@ public class ApplyJob {
 	public void setAppliationId(int appliationId) {
 		this.appliationId = appliationId;
 	}
-	public String getLoginName() {
-		return loginName;
+	
+	public String getLoginname() {
+		return loginname;
 	}
-	public void setLoginname(String loginName) {
-		this.loginName = loginName;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
+	}
+	
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getJobDesignation() {
+		return jobDesignation;
+	}
+	public void setJobDesignation(String jobDesignation) {
+		this.jobDesignation = jobDesignation;
 	}
 	public Date getAppliedDate() {
 		return appliedDate;

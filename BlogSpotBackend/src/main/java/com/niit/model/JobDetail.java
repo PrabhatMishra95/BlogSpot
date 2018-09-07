@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component
 @Entity
 @Table
@@ -24,8 +26,9 @@ public class JobDetail {
 
 	private int salary;
 	private String company;
-	private String role;
+	
 	private String location;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date lastDateToApply;
 	private String jobDescription;
 
@@ -63,13 +66,7 @@ public class JobDetail {
 		this.company = company;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 
 	public String getLocation() {
 		return location;

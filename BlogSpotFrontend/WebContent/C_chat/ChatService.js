@@ -4,7 +4,7 @@
 myApp.service('chatService', function($q , $timeout)
 {
 
-	var base_url="http://localhost:8083/SChatMiddleWare";
+	var base_url="http://localhost:8078/BlogSpotMiddleware";
 	
 	var service={},listener=$q.defer(),socket={client:null,stomp:null},messageIds=[];
 

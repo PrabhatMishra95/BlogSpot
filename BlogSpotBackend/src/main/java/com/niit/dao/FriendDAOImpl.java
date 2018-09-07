@@ -98,11 +98,11 @@ public class FriendDAOImpl implements FriendDAO {
 	
 	
 	@Transactional
-	public List<UserDetail> showSuggestedFriend(String loginName) {
+	public List<UserDetail> showSuggestedFriend(String loginname) {
 	Session session = sessionfactory.openSession();
 	SQLQuery query = session.createSQLQuery(
-			"select loginName from userdetail where loginName not in (select friendloginname from friend where loginName='"
-					+ loginName + "')and loginName!='" + loginName + "'");
+			"select loginname from userdetail where loginname not in (select friendloginname from friend where loginname='"
+					+ loginname + "')and loginname!='" + loginname + "'");
 	List<Object> suggestedFriendName = (List<Object>) query.list();
 	List<UserDetail> suggestFriendList = new ArrayList<UserDetail>();
 	int i = 0;
@@ -116,21 +116,21 @@ public class FriendDAOImpl implements FriendDAO {
 	}
 	
 	@Transactional
-	public List<Friend> showAllFriends(String loginName) {
+	public List<Friend> showAllFriends(String loginname) {
 	
 		Session session = sessionfactory.openSession();
-		Query query = session.createQuery("from Friend where loginName =:currentuser and status='A'");
-		query.setParameter("currentuser", loginName);
+		Query query = session.createQuery("from Friend where loginname =:currentuser and status='A'");
+		query.setParameter("currentuser", loginname);
 		List<Friend> listFriends = (List<Friend>) query.list();
 		return listFriends;
 	}
 
 	@Transactional
-	public List<Friend> showPendingFriendRequest(String loginName) {
+	public List<Friend> showPendingFriendRequest(String loginname) {
 		
 		Session session = sessionfactory.openSession();
-		Query query = session.createQuery("from Friend where loginName =:currentuser and status='P'");
-		query.setParameter("currentuser", loginName);
+		Query query = session.createQuery("from Friend where loginname =:currentuser and status='P'");
+		query.setParameter("currentuser", loginname);
 		List<Friend> listFriends = (List<Friend>) query.list();
 		return listFriends;
 	}

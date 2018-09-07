@@ -22,7 +22,6 @@ public class FriendController {
 	@Autowired
 	FriendDAO friendDAO;
 	
-	
 	@PostMapping(value="/sendFriendRequest")
 	public ResponseEntity<String> sendFriendRequest(@RequestBody Friend friend)
 	{
@@ -58,10 +57,10 @@ public class FriendController {
 			return new ResponseEntity<String>("Failure to accept friend request",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	@GetMapping(value="/showAllFriends/{loginname}")
-	public ResponseEntity<List<Friend>> showAllFriends(@PathVariable("loginname")String loginname)
+	@GetMapping(value="/showAllFriends")
+	public ResponseEntity<List<Friend>> showAllFriends(HttpSession session)
 	{
-		//String loginname=((UserDetail)session.getAttribute("userdetail")).getLoginName();
+		String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
 		List<Friend> listAllFriends=friendDAO.showAllFriends(loginname);
 		if(listAllFriends.size()>0)
 		{
@@ -72,10 +71,10 @@ public class FriendController {
 			return new ResponseEntity<List<Friend>>(listAllFriends,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	@GetMapping(value="/showPendingRequests/{loginname}")
-	public ResponseEntity<List<Friend>> showPendingFriendRequests(@PathVariable("loginname")String loginname)
+	@GetMapping(value="/showPendingRequests")
+	public ResponseEntity<List<Friend>> showPendingFriendRequests(HttpSession session)
 	{
-		//String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginName();
+		String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
 		List<Friend> listPendingRequests=friendDAO.showPendingFriendRequest(loginname);
 		if(listPendingRequests.size()>0)
 		{
@@ -86,10 +85,10 @@ public class FriendController {
 			return new ResponseEntity<List<Friend>>(listPendingRequests,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	@GetMapping(value="/showSuggestedFriends/{loginname}")
-	public ResponseEntity<List<UserDetail>> showSuggestedFriends(@PathVariable("loginname")String loginname)
+	@GetMapping(value="/showSuggestedFriends")
+	public ResponseEntity<List<UserDetail>> showSuggestedFriends(HttpSession session)
 	{
-		//String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginName();
+		String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
 		List<UserDetail> listsuggestedfriend=friendDAO.showSuggestedFriend(loginname);
 		if(listsuggestedfriend.size()>0)
 		{

@@ -60,9 +60,6 @@ myApp.controller("UserController", function($scope, $http, $location,
 	};
 
 	
-	$scope.upload = function() { console.log('Entered into the upload method');
-	 $http.post("http://localhost:8078/BlogSpotMiddleware/doUpload",$scope.userProfile).then(function(response) {
-	 console.log('Status text:' + response.statusText); alert('Uploaded successfully..!!'); $location.path("/"); }); };
 	
 	$scope.fetchUserDetails = function() {
 		console.log("Inside fetch user Details function "

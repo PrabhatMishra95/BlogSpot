@@ -22,7 +22,7 @@ public class ProfileUpdateDAOImpl implements ProfileUpdateDAO {
 		System.out.println("Profile Loginname:" +profilePicture.getLoginname());
 	Session session = sessionfactory.openSession();
 	session.save(profilePicture);
-	session.flush();
+	/*session.flush();*/
 	session.close();
 		
 	}

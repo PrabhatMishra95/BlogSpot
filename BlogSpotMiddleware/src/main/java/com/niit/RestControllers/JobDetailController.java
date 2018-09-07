@@ -92,7 +92,6 @@ public class JobDetailController {
 		@PostMapping(value = "/applyJob")
 		public ResponseEntity<String> addJob(@RequestBody ApplyJob applyJob) {
 			applyJob.setAppliedDate(new java.util.Date());
-			applyJob.setJobId(2);
 			if (jobDAO.applyJob(applyJob)) {
 				System.out.println("==========> ApplyJob details added successfully..");
 				return new ResponseEntity<String>("ApplyJob Added- Success", HttpStatus.OK);

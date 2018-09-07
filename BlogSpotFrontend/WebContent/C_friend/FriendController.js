@@ -73,7 +73,7 @@ myApp.controller("FriendController", function($scope, $http, $location,
 
 		$http.post(
 				'http://localhost:8078/BlogSpotMiddleware/sendFriendRequest/'
-						+ $scope.friend).then(function(response) {
+						+ $scope.friendloginname).then(function(response) {
 			console.log('Friend request sent to' + loginname + '..!!');
 		});
 	}

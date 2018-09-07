@@ -13,6 +13,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.model.ApplyJob;
+
 @Configuration
 @ComponentScan("com.niit")
 @EnableTransactionManagement
@@ -38,7 +40,8 @@ public class DBConfig {
 		sessionFactoryBuilder.addProperties(hibernateProp);
 		
 		sessionFactoryBuilder.scanPackages("com.niit");
-
+/*		sessionFactoryBuilder.addAnnotatedClass(ApplyJob.class);
+*/
 		
 		SessionFactory sessionFactory=sessionFactoryBuilder.buildSessionFactory();
 		System.out.println("Session Factory Created");

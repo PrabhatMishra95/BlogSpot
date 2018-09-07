@@ -33,12 +33,12 @@ public class friendTest {
 	public void sendFriendRequestTest() {
 		friend=new Friend();
 		friend.setFriendloginname("SAchin");
-		friend.setLoginName("Akshay");	
+		friend.setLoginname("Akshay");	
 		assertTrue("Problem in sending friend request",friendDao.sendFriendRequest(friend));
 		System.out.println("<===================Friend Request sent======================>");
 		System.out.println("FirendID:"+friend.getFriendId());
 		System.out.println("FriendLoginname :"+friend.getFriendloginname());
-		System.out.println("Loginname :"+friend.getLoginName());
+		System.out.println("Loginname :"+friend.getLoginname());
 		System.out.println("Status :"+friend.getStatus());
 	}
 	@Ignore
@@ -55,7 +55,7 @@ public class friendTest {
 		 assertNotNull("Problem found null pointer",listFriendReqPending);
 		System.out.println("<========================Pending friend requests=====================>");
 		 for(Friend friend:listFriendReqPending){
-			 System.out.println(friend.getLoginName()+"::::"+friend.getFriendloginname());
+			 System.out.println(friend.getLoginname()+"::::"+friend.getFriendloginname());
 		 }
 	}
 	
@@ -78,7 +78,7 @@ public class friendTest {
 		 assertNotNull("Problem found null pointer",listFriendRequests);
 		System.out.println("<========================All friend requests=====================>");
 		 for(Friend friend:listFriendRequests){
-			 System.out.println(friend.getLoginName()+"::::"+friend.getFriendloginname());
+			 System.out.println(friend.getLoginname()+"::::"+friend.getFriendloginname());
 		 }	
 	}
 	

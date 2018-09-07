@@ -15,15 +15,15 @@
 
 				<p class="list-group-item-text">{{singleBlogData.blogContent}}</p>
 				<div align="right">
-					<button class="btn btn-info" ng-click="editBlog(blog1.blogId)">
+					<button class="btn btn-info" ng-click="editBlog(singleBlogData.blogId)">
 						<i class="fa fa-edit"></i>
 					</button>
-					<button class="btn"  ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="deleteBlog(blog1.blogId)">
+					<button class="btn"  ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="deleteBlog(singleBlogData.blogId)">
 						<i class="fa fa-trash"></i>
 					</button>
 
 				</div>
-				<br /> <span style="color: #0000FF">Created On : </span>{{singleBlogData.createDate| date:"dd MM yyyy"}}
+				<br /> <span style="color: #0000FF">Created On : </span>{{singleBlogData.createDate | date:"dd MMMM yyyy"}}
 				<br />
 				<button class="btn" value="LIKES"
 					ng-click="incrementLike(singleBlogData.blogId)">

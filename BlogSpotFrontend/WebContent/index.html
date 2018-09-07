@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>SChatApp</title>
+<title>BlogSpot</title>
 <script src="js/angular.js"></script>
 <script type="text/javascript" src="js/angular-route.js"></script>
 <script src="js/MyRouteConfig.js"></script>
@@ -15,6 +15,7 @@
 <script src="C_chat/ChatService.js"></script>
 <script src="C_forum/ForumController.js"></script>
 <script src="C_friend/FriendController.js"></script>
+<script src="C_job/JobController.js"></script>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -217,13 +218,27 @@ body {
 								class="dropdown-toggle" data-toggle="dropdown" href="">Friends<span
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#!friends">Friends</a></li>
+									<li><a href="#!myFriends">Friends</a></li>
 									<li><a href="#!suggestedFriends"><i
 											class="glyphicon glyphicon-user"></i>Suggested Friends</a></li>
 									<li><a href="#!pendingRequests">Pending Friend
 											Requests</a></li>
 								</ul></li>
 							<!-- Friend END -->
+							
+							<!-- Jobs -->
+							<li class="dropdown"
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Jobs<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li ng-show="currentUser.role=='ROLE_ADMIN'"><a href="#!Job">Create new job opportunity</a></li>
+									<li><a href="#!ViewJobs">View Jobs</a></li>
+									<li><a href="#!AppliedJobs">Applied Jobs</a></li>
+									
+								</ul></li>
+							<!-- Blogs END -->
+							
 							<!-- Profile dropdown -->
 							<li class="dropdown"
 								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
@@ -287,7 +302,7 @@ body {
 											</button></li>
 									</ul></li>
 								<li><img id="img1"
-									src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}"
+									src="http://localhost:8078/BlogSpotMiddleware/getImage/{{currentUser.loginname}}"
 									alt="avatar" onerror=this.src="avatar.png" style="height: 50px; width: 60px"></li>
 
 							</ul>
@@ -304,7 +319,7 @@ body {
 		<div id="footer">
 			<div class="container">
 				<div class="bottom-bar">
-					Copyright &copy; SChatApp <a href="https://www.facebook.com/">
+					Copyright &copy; BlogSpot <a href="https://www.facebook.com/">
 						<i style="font-size: 24px" class="fa">&#xf082; </i>
 					</a> <a href="https://twitter.com/login"> <i
 						style="font-size: 24px" class="fa">&#xf099;</i></a> <a

@@ -103,7 +103,7 @@ public class jobTest {
 	for (ApplyJob appliedJobs : listAppliedJobs) {
 		System.out.println("ApplicationID :" +appliedJobs.getAppliationId());
 		System.out.println("JobID :" + appliedJobs.getJobId());
-		System.out.println("LoginName :" + appliedJobs.getLoginName());
+		System.out.println("LoginName :" + appliedJobs.getLoginname());
 		System.out.println("Applied Date :" + appliedJobs.getAppliedDate());
 	}
 	System.out.println("<-----------Successfully retrieved list of applied jobs-------->");
