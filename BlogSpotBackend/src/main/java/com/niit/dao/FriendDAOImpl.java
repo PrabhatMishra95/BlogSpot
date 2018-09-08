@@ -44,23 +44,17 @@ public class FriendDAOImpl implements FriendDAO {
 	@Transactional
 	public boolean deleteFriendRequest(int friendId) {
 		System.out.println("Into Deleting FriendRequest");
-		try {
-			Session session = sessionfactory.openSession();
-			Friend friend = (Friend) session.get(Friend.class, friendId);
-
-			if (friend.getStatus() == "P") {
-				sessionfactory.getCurrentSession().delete(friend);
-				session.close();
-				System.out.println("Deleted Friend Request is:" + friendId);
-			} else {
-
-				System.out.println("Friend Request is already Accepted");
-			}
-
+		try
+		{
+			Session session=sessionfactory.openSession();
+			Friend friend=(Friend)session.get(Friend.class, friendId);
+			sessionfactory.getCurrentSession().delete(friend);
+			session.close();
 			return true;
-		} catch (Exception e) {
-			
-			e.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception arised"+e);
 			return false;
 		}
 	}

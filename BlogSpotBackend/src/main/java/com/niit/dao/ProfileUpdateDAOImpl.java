@@ -18,21 +18,16 @@ public class ProfileUpdateDAOImpl implements ProfileUpdateDAO {
 	@Autowired SessionFactory sessionfactory;
 	
 	@Transactional
-	public void saveProfilePic(Profile profilePicture) {
-		System.out.println("Profile Loginname:" +profilePicture.getLoginname());
-	Session session = sessionfactory.openSession();
-	session.save(profilePicture);
-	/*session.flush();*/
-	session.close();
-		
+	public void saveProfilePic(Profile profilePicture)
+	{
+		sessionfactory.getCurrentSession().save(profilePicture);		
 	}
 
 	@Transactional
 	public Profile getProfilePicture(String loginname) {
-		Session session = sessionfactory.openSession();
-		Profile profile=session.get(Profile.class, loginname);
-		session.close();
-		return profile;
+		Session session=sessionfactory.openSession();
+		Profile profilePicture=(Profile)session.get(Profile.class, loginname);
+		return profilePicture;
 	}
 
 }

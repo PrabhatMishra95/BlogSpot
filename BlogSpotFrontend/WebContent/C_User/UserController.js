@@ -76,7 +76,7 @@ myApp.controller("UserController", function($scope, $http, $location,
 				});
 	};
 	
-	$rootScope.logout = function() {
+	/*$rootScope.logout = function() {
 		console.log('Entered into the logout function');
 		$http.post("http://localhost:8078/BlogSpotMiddleware/logout",
 				$rootScope.currentUser).then(function(response) {
@@ -85,6 +85,14 @@ myApp.controller("UserController", function($scope, $http, $location,
 			$cookieStore.remove('userDetails');
 			$location.path("/");
 		});
-	}
+	}*/
+	$scope.logout = function()
+	{
+		console.log("Logging Out");
+		alert("Logged Out Successfully")
+		$location.path("/");
+		$rootScope.currentUser = undefined;
+		$window.location.reload();
+}
 
 });

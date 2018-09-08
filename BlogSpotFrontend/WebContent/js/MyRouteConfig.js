@@ -42,10 +42,10 @@ myApp.config(function($routeProvider) {
 		templateUrl : "C_forum/SingleForum.html"
 	}).when("/Chat", {
 		templateUrl : "C_chat/chat.html"
-	}).when("/myFriends", {
-		templateUrl : "C_friend/myFriends.html"
-	}).when("/pendingRequests", {
-		templateUrl : "C_friend/frndReqRcvd.html"
+	}).when("/ShowFriendList", {
+		templateUrl : "C_friend/ShowFriendList.html"
+	}).when("/ShowPendingFriendRequestList", {
+		templateUrl : "C_friend/ShowPendingFriendRequestList.html"
 	}).when("/Job", {
 		templateUrl : "C_job/addJob.html"
 	}).when("/ViewJobs", {

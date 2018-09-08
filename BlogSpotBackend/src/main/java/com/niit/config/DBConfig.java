@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.model.ApplyJob;
+import com.niit.model.Profile;
 
 @Configuration
 @ComponentScan("com.niit")
@@ -40,7 +41,7 @@ public class DBConfig {
 		sessionFactoryBuilder.addProperties(hibernateProp);
 		
 		sessionFactoryBuilder.scanPackages("com.niit");
-/*		sessionFactoryBuilder.addAnnotatedClass(ApplyJob.class);
+	/*sessionFactoryBuilder.addAnnotatedClass(Profile.class);
 */
 		
 		SessionFactory sessionFactory=sessionFactoryBuilder.buildSessionFactory();

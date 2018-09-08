@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,42 +28,46 @@ public class ProfileController {
 	@Autowired
 	ProfileUpdateDAO profileUpdateDAO;
 	
-		@RequestMapping(value="/doUpload",method=RequestMethod.POST)
-	public ResponseEntity<?> uploadPicture(@RequestParam(value="file")CommonsMultipartFile fileupload,HttpSession session)
+	@PostMapping("/doUpload")
+	public ResponseEntity<?> uploadProfilePicture(@RequestParam(value="file") CommonsMultipartFile fileUpload, HttpSession session)
 	{
-	
-		UserDetail userDetail=(UserDetail)session.getAttribute("userdetail");
-		
-		if(userDetail==null) 
+		UserDetail userDetail=(UserDetail)session.getAttribute("userDetail");
+		if(userDetail==null)
 		{
-			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<String>("Unauthorised User",HttpStatus.NOT_FOUND);
 		}
 		else
 		{
-			System.out.println("Uploading the picture..");
 			Profile profilePicture=new Profile();
 			profilePicture.setLoginname(userDetail.getLoginname());
-			profilePicture.setImage(fileupload.getBytes());
+			profilePicture.setImage(fileUpload.getBytes());
 			profileUpdateDAO.saveProfilePic(profilePicture);
-			System.out.println("Successfully uploaded..!!");
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 	}
-	
-	@RequestMapping(value="/getImage/{loginname}")
-	public @ResponseBody byte[] getProfilePic(@PathVariable("loginname") String loginname)
+
+	@RequestMapping("/getImage/{loginname}")
+	public @ResponseBody byte[] getProfilePicture(@PathVariable("loginname") String loginname,HttpSession session)
 	{
+		UserDetail userDetail=(UserDetail)session.getAttribute("userDetail");
 		
-		Profile profilePicture=profileUpdateDAO.getProfilePicture(loginname);
-		
-		if(profilePicture==null)
+		if(userDetail==null)
 		{
 			return null;
 		}
 		else
 		{
+		Profile profilePicture = profileUpdateDAO.getProfilePicture(loginname);
+		
+		if(profilePicture!= null)
+		{
 			return profilePicture.getImage();
 		}
+		else
+		{
+			return null;
+		}
+	}
 	}
 
 }

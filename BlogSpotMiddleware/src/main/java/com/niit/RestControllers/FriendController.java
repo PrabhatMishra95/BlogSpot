@@ -57,46 +57,44 @@ public class FriendController {
 			return new ResponseEntity<String>("Failure to accept friend request",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	@GetMapping(value="/showAllFriends")
-	public ResponseEntity<List<Friend>> showAllFriends(HttpSession session)
+	@GetMapping("/showAllFriends/{loginname}")
+	public ResponseEntity<List<Friend>> showFriendList(@PathVariable("loginname")String loginname)
 	{
-		String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
-		List<Friend> listAllFriends=friendDAO.showAllFriends(loginname);
-		if(listAllFriends.size()>0)
+		List<Friend> friendList=friendDAO.showAllFriends(loginname);
+		if(friendList.size()>0)
 		{
-			return new 	ResponseEntity<List<Friend>>(listAllFriends,HttpStatus.OK);	
+			return new ResponseEntity<List<Friend>>(friendList,HttpStatus.OK);
 		}
 		else
 		{
-			return new ResponseEntity<List<Friend>>(listAllFriends,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<Friend>>(friendList,HttpStatus.NOT_FOUND);
 		}
 	}
-	@GetMapping(value="/showPendingRequests")
-	public ResponseEntity<List<Friend>> showPendingFriendRequests(HttpSession session)
+	
+	@GetMapping("/showPendingFriendRequest/{loginname}")
+	public ResponseEntity<List<Friend>> showPendingFriendRequest(@PathVariable("loginname")String loginname)
 	{
-		String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
-		List<Friend> listPendingRequests=friendDAO.showPendingFriendRequest(loginname);
-		if(listPendingRequests.size()>0)
+		List<Friend> pendingFriendList=friendDAO.showPendingFriendRequest(loginname);
+		if(pendingFriendList.size()>0)
 		{
-			return new 	ResponseEntity<List<Friend>>(listPendingRequests,HttpStatus.OK);	
+			return new ResponseEntity<List<Friend>>(pendingFriendList,HttpStatus.OK);
 		}
 		else
 		{
-			return new ResponseEntity<List<Friend>>(listPendingRequests,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<Friend>>(pendingFriendList,HttpStatus.NOT_FOUND);
 		}
 	}
-	@GetMapping(value="/showSuggestedFriends")
-	public ResponseEntity<List<UserDetail>> showSuggestedFriends(HttpSession session)
+	@GetMapping("/showSuggestedFriendList/{loginname}")
+	public ResponseEntity<List<UserDetail>> showSuggestedFriendList(@PathVariable("loginname")String loginname)
 	{
-		String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
-		List<UserDetail> listsuggestedfriend=friendDAO.showSuggestedFriend(loginname);
-		if(listsuggestedfriend.size()>0)
+		List<UserDetail> showSuggestedFriendList = friendDAO.showSuggestedFriend(loginname);
+		if(showSuggestedFriendList.size()>0)
 		{
-			return new 	ResponseEntity<List<UserDetail>>(listsuggestedfriend,HttpStatus.OK);	
+			return new ResponseEntity<List<UserDetail>>(showSuggestedFriendList,HttpStatus.OK);
 		}
 		else
 		{
-			return new ResponseEntity<List<UserDetail>>(listsuggestedfriend,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<UserDetail>>(showSuggestedFriendList,HttpStatus.NOT_FOUND);
 		}
 	}
-}
+	}

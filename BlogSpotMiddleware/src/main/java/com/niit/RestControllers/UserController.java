@@ -31,14 +31,13 @@ public class UserController {
 	@PostMapping(value = "/login")
 	public ResponseEntity<UserDetail> checkLogin(@RequestBody UserDetail userDetail, HttpSession session) {
 
-		if (userDAO.checkLogin(userDetail)) {
-			UserDetail tempUser = (UserDetail) userDAO.getUser(userDetail.getLoginname());
-			userDAO.updateOnlineStatus("Y", tempUser);
-			session.setAttribute("userdetail", tempUser);
-			session.setAttribute("loginName", userDetail.getLoginname());
-			return new ResponseEntity<UserDetail>(tempUser, HttpStatus.OK);
+		UserDetail tempUserDetail = userDAO.getUser(userDetail.getLoginname());
+		if (tempUserDetail != null) {
+			userDAO.updateOnlineStatus("Y", tempUserDetail);
+			session.setAttribute("userDetail", tempUserDetail);
+			return new ResponseEntity<UserDetail>(tempUserDetail, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<UserDetail>(userDetail, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<UserDetail>(tempUserDetail, HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -114,16 +113,14 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = { "/logout" }, method = RequestMethod.POST)
-	public ResponseEntity<Void> toLogout(@RequestBody UserDetail user) {
-
-		user.setIsOnline("N");
-		boolean b = userDAO.updateUser(user);
-		if (b)
-			System.out.println("User set Offline");
-		else
-			System.out.println("User couldn't set offline");
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
+	/*
+	 * @RequestMapping(value = { "/logout" }, method = RequestMethod.POST) public
+	 * ResponseEntity<Void> toLogout(@RequestBody UserDetail user) {
+	 * 
+	 * user.setIsOnline("N"); boolean b = userDAO.updateUser(user); if (b)
+	 * System.out.println("User set Offline"); else
+	 * System.out.println("User couldn't set offline"); return new
+	 * ResponseEntity<Void>(HttpStatus.OK); }
+	 */
 
 }

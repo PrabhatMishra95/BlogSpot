@@ -86,14 +86,5 @@ assertEquals("Succefully deleted the user Test Case",true, userdao.deleteuser(us
 
 	}
 
-	@Ignore
-	@Test
-	public void checkUserTest() {
-		UserDetail userDetail = new UserDetail();
-		userDetail.setLoginname("Sam");
-		userDetail.setPassword("sam@123");
-		assertTrue("Problem in Checking User Test Case", userDAO.checkLogin(userDetail));
-		System.out.println("Checked User Successfully");
-	}
-
+	
 }
